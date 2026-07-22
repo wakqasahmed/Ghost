@@ -1,8 +1,8 @@
 import NiceModal, {useModal} from '@ebay/nice-modal-react';
 import {type Action, getActionTitle, getContextResource, getLinkTarget, isBulkAction, useBrowseActions} from '@tryghost/admin-x-framework/api/actions';
 import {ActionList, ActionListItem, ActionListItemContent, Avatar, Field, FieldLabel, LoadingIndicator, MultiSelectCombobox, NoValueLabel, NoValueLabelIcon, Popover, PopoverContent, PopoverTrigger, Switch, inputSurface} from '@tryghost/shade/components';
-import {Button, Icon, InfiniteScrollListener, Modal} from '@tryghost/admin-x-design-system';
-import {ChevronDown, History, X} from 'lucide-react';
+import {Button, InfiniteScrollListener, Modal} from '@tryghost/admin-x-design-system';
+import {ChevronDown, History, Pen, Plus, Trash2, X} from 'lucide-react';
 import {Inline, Stack} from '@tryghost/shade/primitives';
 import {type RoutingModalProps, useRouting} from '@tryghost/admin-x-framework/routing';
 import {type User} from '@tryghost/admin-x-framework/api/users';
@@ -12,18 +12,18 @@ import {useCallback, useEffect, useId, useRef, useState} from 'react';
 import {useFilterableApi} from '@tryghost/admin-x-framework/hooks';
 
 const HistoryIcon: React.FC<{action: Action}> = ({action}) => {
-    let name = 'pen';
+    let Icon = Pen;
 
     switch (action.event) {
     case 'added':
-        name = 'add';
+        Icon = Plus;
         break;
     case 'deleted':
-        name = 'trash';
+        Icon = Trash2;
         break;
     }
 
-    return <Icon name={name} size='xs' />;
+    return <Icon className='size-3' />;
 };
 
 const HistoryAvatar: React.FC<{action: Action}> = ({action}) => {

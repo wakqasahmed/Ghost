@@ -1,9 +1,10 @@
+import BrandIcon from '../../../icons/brand-icon';
 import IntegrationHeader from './integration-header';
 import NiceModal from '@ebay/nice-modal-react';
 import toast from 'react-hot-toast';
 import useSettingGroup from '../../../../hooks/use-setting-group';
 import validator from 'validator';
-import {Button, Form, Icon, Modal, TextField, showToast} from '@tryghost/admin-x-design-system';
+import {Button, Form, Modal, TextField, showToast} from '@tryghost/admin-x-design-system';
 import {getSettingValues, useTestSlack} from '@tryghost/admin-x-framework/api/settings';
 import {useRouting} from '@tryghost/admin-x-framework/routing';
 
@@ -57,7 +58,7 @@ const SlackModal = NiceModal.create(() => {
         >
             <IntegrationHeader
                 detail='A messaging app for teams'
-                icon={<Icon name='slack' size={56} />}
+                icon={<BrandIcon name='slack' size={56} />}
                 title='Slack'
             />
             <div className='mt-7'>

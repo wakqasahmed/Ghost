@@ -6,6 +6,7 @@ import MemberEmailEditor from './member-email-editor';
 import WelcomeEmailPreviewFrame from './welcome-email-preview-frame';
 import {FieldError} from '@tryghost/shade/components';
 import {Button as LegacyButton, Modal, TextField} from '@tryghost/admin-x-design-system';
+import {LucideIcon} from '@tryghost/shade/utils';
 import {confirmIfDirty} from '@tryghost/admin-x-design-system';
 import {getSettingValues} from '@tryghost/admin-x-framework/api/settings';
 import {getWelcomeEmailValidationErrors} from './welcome-email-validation';
@@ -262,7 +263,7 @@ const WelcomeEmailModal = NiceModal.create<WelcomeEmailModalProps>(({emailType =
                                             <LegacyButton
                                                 className='border border-control-border font-semibold hover:bg-button-hover!'
                                                 color="clear"
-                                                icon='send'
+                                                icon={<LucideIcon.Send />}
                                                 label="Test"
                                             />
                                         </PopoverTrigger>

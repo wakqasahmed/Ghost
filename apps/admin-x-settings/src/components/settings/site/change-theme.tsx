@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import TopLevelGroup from '../../top-level-group';
 import {Button, LimitModal, SettingGroupContent} from '@tryghost/admin-x-design-system';
 import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from '@tryghost/shade/components';
+import {LucideIcon} from '@tryghost/shade/utils';
 import {Text} from '@tryghost/shade/primitives';
 import {type Theme, useBrowseThemes} from '@tryghost/admin-x-framework/api/themes';
 import {downloadFile, getGhostPaths} from '@tryghost/admin-x-framework/helpers';
@@ -81,7 +82,7 @@ const ChangeTheme: React.FC<{ keywords: string[] }> = ({keywords}) => {
                     <div className='-mr-3'>
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
-                                <Button disabled={!activeTheme} icon='ellipsis' iconColorClass='text-base' label='Menu' size='sm' hideLabel />
+                                <Button disabled={!activeTheme} icon={<LucideIcon.Ellipsis />} label='Menu' size='sm' hideLabel />
                             </DropdownMenuTrigger>
                             <DropdownMenuContent align='end'>
                                 <DropdownMenuItem onSelect={openThemeEditor}>Edit code</DropdownMenuItem>

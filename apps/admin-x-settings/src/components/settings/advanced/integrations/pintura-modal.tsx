@@ -1,8 +1,9 @@
+import BrandIcon from '../../../icons/brand-icon';
 import IntegrationHeader from './integration-header';
 import NiceModal from '@ebay/nice-modal-react';
 import pinturaScreenshot from '../../../../assets/images/pintura-screenshot.png';
 import {Dropzone, Field, FieldContent, FieldDescription, FieldLabel, Switch} from '@tryghost/shade/components';
-import {Form, Icon, Modal, showToast} from '@tryghost/admin-x-design-system';
+import {Form, Modal, showToast} from '@tryghost/admin-x-design-system';
 import {type Setting, getSettingValues, useEditSettings} from '@tryghost/admin-x-framework/api/settings';
 import {useEffect, useState} from 'react';
 import {useGlobalData} from '../../../providers/global-data-provider';
@@ -90,7 +91,7 @@ const PinturaModal = NiceModal.create(() => {
         >
             <IntegrationHeader
                 detail='Advanced image editing'
-                icon={<Icon name='pintura' size={48} />}
+                icon={<BrandIcon name='pintura' size={48} />}
                 title='Pintura'
             />
             <div className='mt-7'>

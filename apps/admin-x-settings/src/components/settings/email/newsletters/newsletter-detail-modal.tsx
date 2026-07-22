@@ -4,16 +4,16 @@ import React, {useCallback, useEffect, useState} from 'react';
 import useFeatureFlag from '../../../../hooks/use-feature-flag';
 import useSettingGroup from '../../../../hooks/use-setting-group';
 import validator from 'validator';
-import {Button, ButtonGroup, ColorPickerField, ConfirmationModal, Form, HtmlField, Icon, LimitModal, PreviewModalContent, TextField, showToast} from '@tryghost/admin-x-design-system';
+import {Button, ButtonGroup, ColorPickerField, ConfirmationModal, Form, HtmlField, LimitModal, PreviewModalContent, TextField, showToast} from '@tryghost/admin-x-design-system';
 import {type ErrorMessages, useForm, useHandleError} from '@tryghost/admin-x-framework/hooks';
 import {Field, FieldContent, FieldDescription, FieldLabel, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Separator, Switch, Tabs, TabsContent, TabsList, TabsTrigger, Textarea} from '@tryghost/shade/components';
 import {HostLimitError, useLimiter} from '../../../../hooks/use-limiter';
 import {ImageUpload, ImageUploadAction, ImageUploadActions, ImageUploadDropzone, ImageUploadImage, ImageUploadPreview} from '@tryghost/shade/patterns';
+import {LucideIcon, formatNumber} from '@tryghost/shade/utils';
 import {type Newsletter, useBrowseNewsletters, useEditNewsletter} from '@tryghost/admin-x-framework/api/newsletters';
 import {type RoutingModalProps, useRouting} from '@tryghost/admin-x-framework/routing';
 import {Stack, Text} from '@tryghost/shade/primitives';
 import {Trash2} from 'lucide-react';
-import {formatNumber} from '@tryghost/shade/utils';
 import {getImageUrl, useUploadImage} from '@tryghost/admin-x-framework/api/images';
 import {getSettingValue, getSettingValues} from '@tryghost/admin-x-framework/api/settings';
 import {hasSendingDomain, isManagedEmail, sendingDomain} from '@tryghost/admin-x-framework/api/config';
@@ -316,7 +316,7 @@ const Sidebar: React.FC<{
                                             handleError(e);
                                         }
                                     }}>
-                                        <Icon colorClass='text-grey-700 dark:text-grey-300' name='picture' />
+                                        <LucideIcon.Image className='size-5 text-grey-700 dark:text-grey-300' />
                                     </ImageUploadDropzone>
                                 )}
                             </ImageUpload>
@@ -391,7 +391,7 @@ const Sidebar: React.FC<{
                 <Separator />
                 <div className='my-5 flex w-full items-start'>
                     <span>
-                        <Icon className='mt-[-1px] mr-2' colorClass='text-red' name='heart'/>
+                        <LucideIcon.Heart className='mt-[-1px] mr-2 size-5 text-red'/>
                     </span>
                     <Form marginBottom={false}>
                         <Field orientation='horizontal'>
@@ -507,8 +507,7 @@ const Sidebar: React.FC<{
                         <ButtonGroup activeKey={newsletter.title_alignment} buttons={[
                             {
                                 key: 'left',
-                                icon: 'align-left',
-                                iconSize: 14,
+                                icon: <LucideIcon.AlignLeft className='size-3.5!' />,
                                 label: 'Align left',
                                 tooltip: 'Left',
                                 hideLabel: true,
@@ -519,8 +518,7 @@ const Sidebar: React.FC<{
                             },
                             {
                                 key: 'center',
-                                icon: 'align-center',
-                                iconSize: 14,
+                                icon: <LucideIcon.AlignCenter className='size-3.5!' />,
                                 label: 'Align center',
                                 tooltip: 'Center',
                                 hideLabel: true,
@@ -581,8 +579,7 @@ const Sidebar: React.FC<{
                         <ButtonGroup activeKey={newsletter.button_style || 'fill'} buttons={[
                             {
                                 key: 'fill',
-                                icon: 'squircle-fill',
-                                iconSize: 14,
+                                icon: <LucideIcon.Squircle className='size-3.5!' fill='currentColor' />,
                                 label: 'Fill',
                                 tooltip: 'Fill',
                                 hideLabel: true,
@@ -592,8 +589,7 @@ const Sidebar: React.FC<{
                             },
                             {
                                 key: 'outline',
-                                icon: 'squircle',
-                                iconSize: 14,
+                                icon: <LucideIcon.Squircle className='size-3.5!' />,
                                 label: 'Outline',
                                 tooltip: 'Outline',
                                 hideLabel: true,
@@ -608,8 +604,7 @@ const Sidebar: React.FC<{
                         <ButtonGroup activeKey={newsletter.button_corners || 'rounded'} buttons={[
                             {
                                 key: 'square',
-                                icon: 'square',
-                                iconSize: 14,
+                                icon: <LucideIcon.Square className='size-3.5!' />,
                                 label: 'Square',
                                 tooltip: 'Squared',
                                 hideLabel: true,
@@ -619,8 +614,7 @@ const Sidebar: React.FC<{
                             },
                             {
                                 key: 'rounded',
-                                icon: 'squircle',
-                                iconSize: 14,
+                                icon: <LucideIcon.Squircle className='size-3.5!' />,
                                 label: 'Rounded',
                                 tooltip: 'Rounded',
                                 hideLabel: true,
@@ -630,8 +624,7 @@ const Sidebar: React.FC<{
                             },
                             {
                                 key: 'pill',
-                                icon: 'circle',
-                                iconSize: 14,
+                                icon: <LucideIcon.Circle className='size-3.5!' />,
                                 label: 'Pill',
                                 tooltip: 'Pill',
                                 hideLabel: true,
@@ -667,8 +660,7 @@ const Sidebar: React.FC<{
                         <ButtonGroup activeKey={newsletter.link_style || 'underline'} buttons={[
                             {
                                 key: 'underline',
-                                icon: 'text-underline',
-                                iconSize: 14,
+                                icon: <LucideIcon.Underline className='size-3.5!' />,
                                 label: 'Underline',
                                 tooltip: 'Underline',
                                 hideLabel: true,
@@ -678,8 +670,7 @@ const Sidebar: React.FC<{
                             },
                             {
                                 key: 'regular',
-                                icon: 'text-regular',
-                                iconSize: 14,
+                                icon: <LucideIcon.Type className='size-3.5!' />,
                                 label: 'Regular',
                                 tooltip: 'Regular',
                                 hideLabel: true,
@@ -689,8 +680,7 @@ const Sidebar: React.FC<{
                             },
                             {
                                 key: 'bold',
-                                icon: 'text-bold',
-                                iconSize: 14,
+                                icon: <LucideIcon.Bold className='size-3.5!' />,
                                 label: 'Bold',
                                 tooltip: 'Bold',
                                 hideLabel: true,
@@ -705,8 +695,7 @@ const Sidebar: React.FC<{
                         <ButtonGroup activeKey={newsletter.image_corners || 'square'} buttons={[
                             {
                                 key: 'square',
-                                icon: 'square',
-                                iconSize: 14,
+                                icon: <LucideIcon.Square className='size-3.5!' />,
                                 label: 'Square',
                                 tooltip: 'Squared',
                                 hideLabel: true,
@@ -716,8 +705,7 @@ const Sidebar: React.FC<{
                             },
                             {
                                 key: 'rounded',
-                                icon: 'squircle',
-                                iconSize: 14,
+                                icon: <LucideIcon.Squircle className='size-3.5!' />,
                                 label: 'Rounded',
                                 tooltip: 'Rounded',
                                 hideLabel: true,
@@ -794,7 +782,7 @@ const NewsletterDetailModalContent: React.FC<{newsletter: Newsletter; onlyOne: b
 
             if (toastMessage) {
                 showToast({
-                    icon: 'email',
+                    icon: <LucideIcon.Mail className='size-4' />,
                     message: toastMessage,
                     type: 'info'
                 });

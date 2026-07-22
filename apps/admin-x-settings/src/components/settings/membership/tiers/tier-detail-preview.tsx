@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import clsx from 'clsx';
-import {Button, Icon} from '@tryghost/admin-x-design-system';
+import {Button} from '@tryghost/admin-x-design-system';
+import {LucideIcon, formatNumber} from '@tryghost/shade/utils';
 import {Text} from '@tryghost/shade/primitives';
 import {type TierFormState} from './tier-detail-modal';
 import {currencyToDecimal, getSymbol} from '../../../../utils/currency';
-import {formatNumber} from '@tryghost/shade/utils';
 
 interface TierDetailPreviewProps {
     tier: TierFormState;
@@ -34,7 +34,7 @@ const TierBenefits: React.FC<{benefits: string[]}> = ({benefits}) => {
         return (
             <div className="mt-4 w-full text-md leading-snug text-grey-900 opacity-30">
                 <div className="mb-2.5 flex items-start">
-                    <Icon className="mt-[3px] mr-[10px] size-3.5! min-w-[14px] overflow-visible stroke-[3px]!" name='check' />
+                    <LucideIcon.Check className="mt-[3px] mr-[10px] size-3.5! min-w-[14px] overflow-visible stroke-[3px]!" />
                     <div>Expert analysis</div>
                 </div>
             </div>
@@ -47,7 +47,7 @@ const TierBenefits: React.FC<{benefits: string[]}> = ({benefits}) => {
                     return (
                         <div key={benefit} className="mt-4 w-full text-md leading-snug text-grey-900">
                             <div className="mb-2.5 flex items-start">
-                                <Icon className="mt-[3px] mr-[10px] size-3.5! min-w-[14px] overflow-visible stroke-[3px]!" name='check' />
+                                <LucideIcon.Check className="mt-[3px] mr-[10px] size-3.5! min-w-[14px] overflow-visible stroke-[3px]!" />
                                 <div>{benefit}</div>
                             </div>
                         </div>

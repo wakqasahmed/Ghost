@@ -1,7 +1,8 @@
 import APIKeys from './api-keys';
 import IntegrationHeader from './integration-header';
 import NiceModal from '@ebay/nice-modal-react';
-import {Button, Icon, Modal} from '@tryghost/admin-x-design-system';
+import {Button, Modal} from '@tryghost/admin-x-design-system';
+import {LucideIcon} from '@tryghost/shade/utils';
 import {getGhostPaths} from '@tryghost/admin-x-framework/helpers';
 import {useBrowseIntegrations} from '@tryghost/admin-x-framework/api/integrations';
 import {useRouting} from '@tryghost/admin-x-framework/routing';
@@ -22,7 +23,7 @@ const ContentApiModal = NiceModal.create(() => {
             cancelLabel=''
             footer={
                 <div className='mx-8 flex w-full items-center justify-between'>
-                    <Button color='outline' href='https://ghost.org/docs/content-api/' label={<span className='flex items-center gap-1'>Open docs <Icon name='arrow-top-right' size='xs' /></span>} rel='noopener noreferrer' tag='a' target='_blank' />
+                    <Button color='outline' href='https://ghost.org/docs/content-api/' label={<span className='flex items-center gap-1'>Open docs <LucideIcon.ExternalLink className='size-3' /></span>} rel='noopener noreferrer' tag='a' target='_blank' />
                     <Button color='black' label='Close' onClick={() => {
                         updateRoute('integrations');
                         modal.remove();
@@ -35,7 +36,7 @@ const ContentApiModal = NiceModal.create(() => {
         >
             <IntegrationHeader
                 detail='Access your content programmatically'
-                icon={<Icon name='angle-brackets' size={56} />}
+                icon={<LucideIcon.Code className='size-14' />}
                 title='Content API'
             />
             <div className='mt-7'>

@@ -10,6 +10,7 @@ import {Button, ConfirmationModal, Form, LimitModal, Modal, StripeButton, TextFi
 import {Field, FieldError, FieldLabel, Switch, Textarea} from '@tryghost/shade/components';
 import {HostLimitError, useLimiter} from '../../../../hooks/use-limiter';
 import {JSONError} from '@tryghost/admin-x-framework/errors';
+import {LucideIcon} from '@tryghost/shade/utils';
 import {Text} from '@tryghost/shade/primitives';
 import {checkStripeEnabled, getSettingValue, getSettingValues, useDeleteStripeSettings, useEditSettings} from '@tryghost/admin-x-framework/api/settings';
 import {getGhostPaths} from '@tryghost/admin-x-framework/helpers';
@@ -183,8 +184,8 @@ const Connected: React.FC<{onClose?: () => void}> = ({onClose}) => {
     return (
         <section>
             <div className='flex items-center justify-between'>
-                <Button color='red' disabled={isFetchingMembers} icon='link-broken' iconColorClass='text-red' label='Disconnect' link onClick={openDisconnectStripeModal} />
-                <Button icon='close' iconColorClass='dark:text-white' label='Close' size='sm' hideLabel link onClick={onClose} />
+                <Button color='red' disabled={isFetchingMembers} icon={<LucideIcon.Unlink />} iconColorClass='text-red' label='Disconnect' link onClick={openDisconnectStripeModal} />
+                <Button icon={<LucideIcon.X />} label='Close' size='sm' hideLabel link onClick={onClose} />
             </div>
             <div className='my-20 flex flex-col items-center'>
                 <div className='relative h-20 w-[200px]'>

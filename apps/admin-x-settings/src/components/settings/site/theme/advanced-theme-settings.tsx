@@ -6,6 +6,7 @@ import {ActionList, ActionListItem, ActionListItemActions, ActionListItemContent
 import {Button, ConfirmationModal, LimitModal, ModalPage, showToast} from '@tryghost/admin-x-design-system';
 import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from '@tryghost/shade/components';
 import {JSONError} from '@tryghost/admin-x-framework/errors';
+import {LucideIcon} from '@tryghost/shade/utils';
 import {type Theme, isActiveTheme, isDefaultTheme, isDeletableTheme, isLegacyTheme, useActivateTheme, useDeleteTheme} from '@tryghost/admin-x-framework/api/themes';
 import {downloadFile, getGhostPaths} from '@tryghost/admin-x-framework/helpers';
 import {useCheckThemeLimitError} from '../../../../hooks/use-check-theme-limit-error';
@@ -162,7 +163,7 @@ const ThemeActions: React.FC<ThemeActionProps> = ({
             {actions}
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                    <Button icon='ellipsis' iconColorClass='text-base' label='Menu' size='sm' hideLabel />
+                    <Button icon={<LucideIcon.Ellipsis />} label='Menu' size='sm' hideLabel />
                 </DropdownMenuTrigger>
                 {/* legacy ModalPage overlay is z-[1000]; keep the portalled menu above it */}
                 <DropdownMenuContent align='end' className='z-[9999]'>

@@ -2,6 +2,7 @@ import NiceModal from '@ebay/nice-modal-react';
 import WebhookModal from './webhook-modal';
 import {Button, ConfirmationModal, showToast} from '@tryghost/admin-x-design-system';
 import {type Integration} from '@tryghost/admin-x-framework/api/integrations';
+import {LucideIcon} from '@tryghost/shade/utils';
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from '@tryghost/shade/components';
 import {formatNumber} from '@tryghost/shade/utils';
 import {getWebhookEventLabel} from './webhook-event-options';
@@ -85,8 +86,7 @@ const WebhooksTable: React.FC<{integration: Integration}> = ({integration}) => {
         <div className='mt-5'>
             <Button
                 color='green'
-                icon='add'
-                iconColorClass='text-green'
+                icon={<LucideIcon.Plus className='text-green' />}
                 label='Add webhook'
                 size='sm'
                 link

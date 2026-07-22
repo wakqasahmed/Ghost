@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import SettingsBreadcrumbs from '../../settings-breadcrumbs';
 import {Button, ButtonGroup, DesktopChrome, MobileChrome, PageHeader} from '@tryghost/admin-x-design-system';
 import {Field, FieldLabel, Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@tryghost/shade/components';
+import {LucideIcon} from '@tryghost/shade/utils';
 import {type OfficialTheme, type ThemeVariant} from '../../../providers/settings-app-provider';
 import {type Theme, isDefaultOrLegacyTheme} from '@tryghost/admin-x-framework/api/themes';
 
@@ -104,8 +105,7 @@ const ThemePreview: React.FC<{
             <ButtonGroup
                 buttons={[
                     {
-                        icon: 'laptop',
-                        iconColorClass: (previewMode === 'desktop' ? 'text-black dark:text-green' : 'text-grey-500 dark:text-grey-600'),
+                        icon: <LucideIcon.Laptop className={previewMode === 'desktop' ? 'text-foreground' : 'text-muted-foreground'} />,
                         link: true,
                         size: 'sm',
                         onClick: () => {
@@ -113,8 +113,7 @@ const ThemePreview: React.FC<{
                         }
                     },
                     {
-                        icon: 'mobile',
-                        iconColorClass: (previewMode === 'mobile' ? 'text-black dark:text-green' : 'text-grey-500 dark:text-grey-600'),
+                        icon: <LucideIcon.Smartphone className={previewMode === 'mobile' ? 'text-foreground' : 'text-muted-foreground'} />,
                         link: true,
                         size: 'sm',
                         onClick: () => {

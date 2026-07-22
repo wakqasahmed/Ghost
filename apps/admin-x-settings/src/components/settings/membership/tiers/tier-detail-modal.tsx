@@ -4,9 +4,10 @@ import TierDetailPreview from './tier-detail-preview';
 import useCurrencyInput from '../../../../hooks/use-currency-input';
 import useSettingGroup from '../../../../hooks/use-setting-group';
 import useUrlInput from '../../../../hooks/use-url-input';
-import {Button, type ButtonProps, ConfirmationModal, Form, Icon, Modal, SortableList, TextField, showToast, useSortableIndexedList} from '@tryghost/admin-x-design-system';
+import {Button, type ButtonProps, ConfirmationModal, Form, Modal, SortableList, TextField, showToast, useSortableIndexedList} from '@tryghost/admin-x-design-system';
 import {Combobox, ComboboxContent, ComboboxTrigger, ComboboxValue, Field, FieldDescription, FieldError, FieldLabel, Input, InputGroup, InputGroupAddon, InputGroupInput, InputGroupText, MultiSelectCombobox, Switch} from '@tryghost/shade/components';
 import {type ErrorMessages, useForm, useHandleError} from '@tryghost/admin-x-framework/hooks';
+import {LucideIcon} from '@tryghost/shade/utils';
 import {type RoutingModalProps, useRouting} from '@tryghost/admin-x-framework/routing';
 import {Text} from '@tryghost/shade/primitives';
 import {type Tier, useAddTier, useBrowseTiers, useEditTier} from '@tryghost/admin-x-framework/api/tiers';
@@ -356,20 +357,20 @@ const TierDetailModalContent: React.FC<{tier?: Tier}> = ({tier}) => {
                             items={benefits.items}
                             itemSeparator={false}
                             renderItem={({id, item}) => <div className='relative flex w-full items-center gap-5'>
-                                <div className='absolute top-[7px] left-[-32px] flex size-6 items-center justify-center bg-white group-hover:hidden dark:bg-black'><Icon name='check' size='sm' /></div>
+                                <div className='absolute top-[7px] left-[-32px] flex size-6 items-center justify-center bg-white group-hover:hidden dark:bg-black'><LucideIcon.Check className='size-4' /></div>
                                 <TextField
                                     // className='grow border-b border-grey-500 py-2 focus:border-grey-800 group-hover:border-grey-600'
                                     maxLength={191}
                                     value={item}
                                     onChange={e => benefits.updateItem(id, e.target.value)}
                                 />
-                                <Button className='absolute top-1/2 right-1 z-10 size-5! -translate-y-1/2 p-0! opacity-0 group-hover:opacity-100' color='grey' icon='trash' size='sm' onClick={() => benefits.removeItem(id)} />
+                                <Button className='absolute top-1/2 right-1 z-10 size-5! -translate-y-1/2 p-0! opacity-0 group-hover:opacity-100' color='grey' icon={<LucideIcon.Trash2 />} size='sm' onClick={() => benefits.removeItem(id)} />
                             </div>}
                             onMove={benefits.moveItem}
                         />
                     </div>
                     <div className="relative mt-1 flex items-center gap-3">
-                        <Icon className='dark:text-white' name='check' size='sm' />
+                        <LucideIcon.Check className='size-4 dark:text-white' />
                         <TextField
                             className='grow'
                             containerClassName='w-100'
@@ -388,8 +389,7 @@ const TierDetailModalContent: React.FC<{tier?: Tier}> = ({tier}) => {
                         <Button
                             className='absolute top-1/2 right-1 z-10 size-[22px]! -translate-y-1/2 p-0!'
                             color='green'
-                            icon='add'
-                            iconColorClass='text-white'
+                            icon={<LucideIcon.Plus className='text-white' />}
                             label='Add'
                             size='sm'
                             hideLabel

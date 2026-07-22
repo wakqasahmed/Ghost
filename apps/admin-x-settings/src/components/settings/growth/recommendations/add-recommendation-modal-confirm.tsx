@@ -4,6 +4,7 @@ import React from 'react';
 import RecommendationDescriptionForm, {validateDescriptionForm} from './recommendation-description-form';
 import trackEvent from '../../../../utils/analytics';
 import {type EditOrAddRecommendation, useAddRecommendation} from '@tryghost/admin-x-framework/api/recommendations';
+import {LucideIcon} from '@tryghost/shade/utils';
 import {Modal, dismissAllToasts, showToast} from '@tryghost/admin-x-design-system';
 import {useForm, useHandleError} from '@tryghost/admin-x-framework/hooks';
 import {useRouting} from '@tryghost/admin-x-framework/routing';
@@ -53,7 +54,7 @@ const AddRecommendationModalConfirm: React.FC<AddRecommendationModalProps> = ({r
 
     const leftButtonProps = {
         label: 'Back',
-        icon: 'arrow-left',
+        icon: <LucideIcon.ArrowLeft />,
         iconColorClass: 'text-black dark:text-white',
         link: true,
         size: 'sm' as const,

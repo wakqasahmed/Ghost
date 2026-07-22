@@ -1,7 +1,6 @@
 import {Badge, DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuTrigger, Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from '@tryghost/shade/components';
 import {Button, type ButtonProps, showToast} from '@tryghost/admin-x-design-system';
 import {ButtonGroup} from '@tryghost/admin-x-design-system';
-import {Icon} from '@tryghost/admin-x-design-system';
 import {Inline, Stack} from '@tryghost/shade/primitives';
 import {LucideIcon, formatNumber} from '@tryghost/shade/utils';
 import {Modal} from '@tryghost/admin-x-design-system';
@@ -85,7 +84,7 @@ const OffersFilterMenu: React.FC<{
                     <DropdownMenuRadioItem value='redemptions'>Redemptions</DropdownMenuRadioItem>
                 </DropdownMenuRadioGroup>
                 <DropdownMenuItem onSelect={onDirectionChange}>
-                    <Icon name={sortDirection === 'asc' ? 'arrow-up' : 'arrow-down'} size='xs' />
+                    {sortDirection === 'asc' ? <LucideIcon.ArrowUp className='size-3' /> : <LucideIcon.ArrowDown className='size-3' />}
                     {sortDirection === 'asc' ? 'Ascending' : 'Descending'}
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
@@ -338,7 +337,7 @@ export const OffersIndexModal: React.FC = () => {
         },
         {
             key: 'new-offer',
-            icon: 'add',
+            icon: <LucideIcon.Plus />,
             label: 'New offer',
             color: 'green' as const,
             onClick: () => {

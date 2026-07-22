@@ -1,6 +1,7 @@
 import NavigationItemEditor from './navigation-item-editor';
 import React from 'react';
-import {Button, Icon, SortableList} from '@tryghost/admin-x-design-system';
+import {Button, SortableList} from '@tryghost/admin-x-design-system';
+import {LucideIcon} from '@tryghost/shade/utils';
 import {type NavigationEditor} from '../../../../hooks/site/use-navigation-editor';
 
 const NavigationEditForm: React.FC<{
@@ -13,7 +14,7 @@ const NavigationEditForm: React.FC<{
             itemSeparator={false}
             renderItem={item => (
                 <NavigationItemEditor
-                    action={<Button className='mt-1 self-start' icon="trash" iconColorClass='dark:text-white' size='sm' onClick={() => navigation.removeItem(item.id)} />}
+                    action={<Button className='mt-1 self-start' icon={<LucideIcon.Trash2 />} size='sm' onClick={() => navigation.removeItem(item.id)} />}
                     baseUrl={baseUrl}
                     clearError={key => navigation.clearError(item.id, key)}
                     item={item}
@@ -23,9 +24,9 @@ const NavigationEditForm: React.FC<{
             onMove={navigation.moveItem}
         />
         <div className='flex items-start gap-3'>
-            <Icon colorClass='mt-3 text-grey-300 dark:text-grey-900' name='add' size='sm' />
+            <LucideIcon.Plus className='mt-3 size-4 text-muted-foreground' />
             <NavigationItemEditor
-                action={<Button className='mx-2 mt-1 self-start rounded bg-green p-1' data-testid="add-button" icon="add" iconColorClass='text-white' size='sm' unstyled onClick={navigation.addItem} />}
+                action={<Button className='mx-2 mt-1 self-start rounded bg-green p-1' data-testid="add-button" icon={<LucideIcon.Plus />} iconColorClass='text-white' size='sm' unstyled onClick={navigation.addItem} />}
                 addItem={navigation.addItem}
                 baseUrl={baseUrl}
                 className="mt-1"

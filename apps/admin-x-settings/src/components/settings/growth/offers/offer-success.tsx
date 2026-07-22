@@ -1,6 +1,7 @@
+import BrandIcon from '../../../icons/brand-icon';
 import SettingsBreadcrumbs from '../../settings-breadcrumbs';
 import {Button} from '@tryghost/admin-x-design-system';
-import {Icon} from '@tryghost/admin-x-design-system';
+import {LucideIcon} from '@tryghost/shade/utils';
 import {Modal} from '@tryghost/admin-x-design-system';
 import {type Offer, useBrowseOffersById} from '@tryghost/admin-x-framework/api/offers';
 import {TextField} from '@tryghost/admin-x-design-system';
@@ -89,7 +90,7 @@ const OfferSuccess: React.FC<{id: string}> = ({id}) => {
                 label='Offers'
                 onBack={() => updateRoute('offers/edit')}
             />
-            <Icon colorClass='text-grey-700 -mt-4' name='tags-check' size='xl' />
+            <LucideIcon.BadgeCheck className='-mt-4 size-10 text-grey-700' />
             <h1 className='mt-6 text-4xl'>Your new offer is live!</h1>
             <p className='mt-3 max-w-[510px] text-[1.6rem]'>You can share the link anywhere. In your newsletter, social media, a podcast, or in-person. It all just works.</p>
             <div className='mt-8 flex w-full max-w-md flex-col gap-8'>
@@ -99,9 +100,9 @@ const OfferSuccess: React.FC<{id: string}> = ({id}) => {
                 </div>
                 <div className='flex items-center gap-4 text-sm font-medium before:h-px before:grow before:bg-grey-300 before:content-[""] after:h-px after:grow after:bg-grey-300 after:content-[""] dark:before:bg-grey-800 dark:after:bg-grey-800'>OR</div>
                 <div className='flex gap-2'>
-                    <Button className='h-8 border border-grey-300 dark:border-grey-800' icon='twitter-x' iconColorClass='w-[14px] h-[14px]' size='sm' fullWidth onClick={handleTwitter} />
-                    <Button className='h-8 border border-grey-300 dark:border-grey-800' icon='facebook' size='sm' fullWidth onClick={handleFacebook} />
-                    <Button className='h-8 border border-grey-300 dark:border-grey-800' icon='linkedin' size='sm' fullWidth onClick={handleLinkedIn} />
+                    <Button className='h-8 border border-grey-300 dark:border-grey-800' icon={<BrandIcon className='size-[14px]!' name='twitter-x' />} size='sm' fullWidth onClick={handleTwitter} />
+                    <Button className='h-8 border border-grey-300 dark:border-grey-800' icon={<BrandIcon className='size-[14px]!' name='facebook' />} size='sm' fullWidth onClick={handleFacebook} />
+                    <Button className='h-8 border border-grey-300 dark:border-grey-800' icon={<BrandIcon className='size-[14px]!' name='linkedin' />} size='sm' fullWidth onClick={handleLinkedIn} />
                 </div>
             </div>
         </div>

@@ -3,8 +3,9 @@ import React, {useEffect, useState} from 'react';
 import SettingImg from '../../../assets/images/ghost-explore.png';
 import TopLevelGroup from '../../top-level-group';
 import useSettingGroup from '../../../hooks/use-setting-group';
-import {Button, Icon, SettingGroupContent} from '@tryghost/admin-x-design-system';
+import {Button, SettingGroupContent} from '@tryghost/admin-x-design-system';
 import {Field, FieldContent, FieldDescription, FieldLabel, Separator, Switch} from '@tryghost/shade/components';
+import {LucideIcon} from '@tryghost/shade/utils';
 import {type Setting, getSettingValue, getSettingValues, useEditSettings} from '@tryghost/admin-x-framework/api/settings';
 import {abbreviateNumber} from '@tryghost/shade/utils';
 import {useBrowseMembers} from '@tryghost/admin-x-framework/api/members';
@@ -114,7 +115,7 @@ const Explore: React.FC<{ keywords: string[] }> = ({keywords}) => {
                                 </span>
                                 :
                                 <span className='flex size-5 items-center justify-center rounded-full border border-black text-black group-hover:bg-black group-hover:text-white'>
-                                    <Icon name='arrow-right' size={10} />
+                                    <LucideIcon.ArrowRight className='size-2.5' />
                                 </span>
                             }
                         </a>
@@ -125,7 +126,7 @@ const Explore: React.FC<{ keywords: string[] }> = ({keywords}) => {
                         <span className='font-medium'>Get featured on the Ghost.org homepage</span>
                         <span className='text-pretty text-black/80 dark:text-white/80'>Send us a quote we can use to highlight your site</span>
                     </div>
-                    <Button className='border border-purple bg-white text-purple hover:bg-purple/5 hover:text-purple dark:bg-transparent' icon="send" label="Send testimonial" onClick={() => {
+                    <Button className='border border-purple bg-white text-purple hover:bg-purple/5 hover:text-purple dark:bg-transparent' icon={<LucideIcon.Send />} label="Send testimonial" onClick={() => {
                         updateRoute('explore/testimonial');
                     }} />
                 </div>
