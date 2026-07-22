@@ -3,6 +3,7 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 import Button from '../button';
 import ButtonGroup from '../button-group';
 import DesktopChromeHeader from './desktop-chrome-header';
+import {LucideIcon} from '@tryghost/shade/utils';
 
 const meta = {
     title: 'Global / Chrome / Desktop Header',
@@ -43,12 +44,12 @@ export const WithTitle: Story = {
 
 export const CustomToolbar: Story = {
     args: {
-        toolbarLeft: <Button icon='arrow-left' link={true} size='sm' />,
+        toolbarLeft: <Button icon={<LucideIcon.ArrowLeft />} link={true} size='sm' />,
         toolbarCenter: <span>Homepage</span>,
         toolbarRight: <ButtonGroup
             buttons={[
-                {icon: 'laptop', link: true, size: 'sm'},
-                {icon: 'mobile', link: true, size: 'sm', iconColorClass: 'text-grey-500'}
+                {icon: <LucideIcon.Laptop />, link: true, size: 'sm'},
+                {icon: <LucideIcon.Smartphone />, link: true, size: 'sm', iconColorClass: 'text-grey-500'}
             ]}
         />
     }

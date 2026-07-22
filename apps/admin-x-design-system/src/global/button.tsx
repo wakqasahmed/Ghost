@@ -1,4 +1,3 @@
-import Icon, {IconSize} from './icon';
 import React, {HTMLProps} from 'react';
 import clsx from 'clsx';
 import {LoadingIndicator, LoadingIndicatorColor, LoadingIndicatorSize} from './loading-indicator';
@@ -10,8 +9,7 @@ export interface ButtonProps extends Omit<HTMLProps<HTMLButtonElement>, 'label' 
     size?: ButtonSize;
     label?: React.ReactNode;
     hideLabel?: boolean;
-    icon?: string;
-    iconSize?: IconSize;
+    icon?: React.ReactNode;
     iconColorClass?: string;
     key?: string;
     color?: ButtonColor;
@@ -35,8 +33,7 @@ const Button: React.FC<ButtonProps> = React.forwardRef(({
     size = 'md',
     label = '',
     hideLabel = false,
-    icon = '',
-    iconSize,
+    icon,
     iconColorClass,
     color = 'clear',
     fullWidth,
@@ -136,16 +133,19 @@ const Button: React.FC<ButtonProps> = React.forwardRef(({
         );
     }
 
-    const iconClasses = label && icon && !hideLabel ? 'mr-1.5' : '';
+    const iconClasses = clsx(
+        'inline-flex shrink-0 items-center justify-center [&>svg]:pointer-events-none',
+        size === 'sm' || (label && icon) ? '[&>svg]:size-4' : '[&>svg]:size-5',
+        label && icon && !hideLabel && 'mr-1.5',
+        iconColorClass
+    );
 
     let labelClasses = '';
     labelClasses += (label && hideLabel) ? 'sr-only' : '';
     labelClasses += loading ? 'invisible' : '';
 
-    iconSize = iconSize || ((size === 'sm') || (label && icon) ? 'sm' : 'md');
-
     const buttonChildren = <>
-        {icon && <Icon className={iconClasses} colorClass={iconColorClass} name={icon} size={iconSize} />}
+        {icon && <span className={iconClasses}>{icon}</span>}
         <span className={labelClasses}>{label}</span>
         {loading && <div className='absolute flex'><LoadingIndicator color={loadingIndicatorColor} size={size}/><span className='sr-only'>Loading...</span></div>}
     </>;

@@ -48,8 +48,6 @@ export {default as ButtonGroup} from './global/button-group';
 export type {ButtonGroupProps} from './global/button-group';
 export {default as ErrorBoundary} from './global/error-boundary';
 export type {ErrorBoundaryProps} from './global/error-boundary';
-export {default as Icon} from './global/icon';
-export type {IconProps} from './global/icon';
 export {default as InfiniteScrollListener} from './global/infinite-scroll-listener';
 export type {InfiniteScrollListenerProps} from './global/infinite-scroll-listener';
 export {LoadingIndicator} from './global/loading-indicator';

@@ -5,9 +5,9 @@ import useGlobalDirtyState from '../../hooks/use-global-dirty-state';
 import {confirmIfDirty} from '../../utils/modals';
 import {ButtonColor, ButtonProps} from '../button';
 import ButtonGroup from '../button-group';
-import Icon from '../icon';
 import Modal, {ModalSize} from './modal';
 import {Text, type TextElement, type TextLeading, type TextSize} from '@tryghost/shade/primitives';
+import {LucideIcon} from '@tryghost/shade/utils';
 
 type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
@@ -157,7 +157,7 @@ export const PreviewModalContent: React.FC<PreviewModalProps> = ({
         if (siteLink) {
             viewSiteButton = (
                 <div className='ml-3 border-l border-grey-400 dark:border-grey-800'>
-                    <a className='ml-3 flex items-center gap-1' href={siteLink} rel="noopener noreferrer" target="_blank">View site <Icon name='arrow-top-right' size='xs' /></a>
+                    <a className='ml-3 flex items-center gap-1' href={siteLink} rel="noopener noreferrer" target="_blank">View site <LucideIcon.ExternalLink className='size-3' /></a>
                 </div>
             );
         }

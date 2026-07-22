@@ -3,6 +3,7 @@ import {ReactNode} from 'react';
 
 import Button from './button';
 import {ShowToastProps, showToast} from './toast';
+import {LucideIcon} from '@tryghost/shade/utils';
 
 /**
  * This component uses `react-hot-toast` which requires the `<Toaster />` component to be included in the app.
@@ -113,7 +114,7 @@ export const PageError: Story = {
 export const Icon: Story = {
     args: {
         message: 'Custom icon in a toast',
-        icon: 'user-add'
+        icon: <LucideIcon.UserPlus />
     }
 };
 

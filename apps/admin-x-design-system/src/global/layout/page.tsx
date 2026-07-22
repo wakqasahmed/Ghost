@@ -6,7 +6,8 @@ import Button from '../button';
 import PageHeader from './page-header';
 
 export interface CustomGlobalAction {
-    iconName: string;
+    key: string;
+    icon: React.ReactNode;
     onClick?: () => void;
 }
 
@@ -86,9 +87,9 @@ const Page: React.FC<PageProps> = ({
     const globalActions = (
         (customGlobalActions?.length || showGlobalActions) &&
         <div className='sticky flex items-center gap-7'>
-            {(customGlobalActions?.map((action, idx) => {
+            {(customGlobalActions?.map((action) => {
                 return (
-                    <Button key={action.iconName ?? idx} icon={action.iconName} iconColorClass='text-black dark:text-white' size='sm' link onClick={action.onClick} />
+                    <Button key={action.key} icon={action.icon} iconColorClass='text-black dark:text-white' size='sm' link onClick={action.onClick} />
                 );
             }))}
             {showGlobalActions && <GlobalActions />}

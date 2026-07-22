@@ -3,10 +3,10 @@ import {SortableContext, useSortable, verticalListSortingStrategy} from '@dnd-ki
 import {CSS} from '@dnd-kit/utilities';
 import clsx from 'clsx';
 import React, {ElementType, HTMLProps, ReactNode, useState} from 'react';
-import Icon from './icon';
 import LegacyHint from './legacy-hint';
 import Separator from './separator';
 import {Stack, Text} from '@tryghost/shade/primitives';
+import {LucideIcon} from '@tryghost/shade/utils';
 
 export interface SortableItemContainerProps {
     id: string;
@@ -37,7 +37,7 @@ export const DragIndicator: React.FC<DragIndicatorProps> = ({isDragging, dragHan
         {...dragHandleListeners}
         {...props}
     >
-        <Icon colorClass='text-grey-500' name='hamburger' size='sm' />
+        <LucideIcon.GripVertical className='size-4 text-grey-500' />
     </button>
 );
 

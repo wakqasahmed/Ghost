@@ -6,6 +6,7 @@ import ViewContainer from './view-container';
 import {exampleActions as exampleActionButtons} from './view-container.stories';
 import Button from '../button';
 import {Text} from '@tryghost/shade/primitives';
+import {LucideIcon} from '@tryghost/shade/utils';
 
 const meta = {
     title: 'Global / Layout / Page',
@@ -23,7 +24,8 @@ const dummyContent = <div className='w-full bg-grey-100 p-5 text-center'>Placeho
 
 const customGlobalActions: CustomGlobalAction[] = [
     {
-        iconName: 'heart',
+        key: 'heart',
+        icon: <LucideIcon.Heart />,
         onClick: () => {
             alert('Clicked on custom action');
         }
@@ -102,7 +104,7 @@ const exampleCardViewContent = (
         firstOnPage={false}
         primaryAction={{
             title: 'New idea',
-            icon: 'add'
+            icon: <LucideIcon.Plus />
         }}
         title='Ideas'
         type='page'
@@ -155,7 +157,7 @@ const mockPosts = () => {
                     opened
                 </div>
                 <div className='flex justify-end pr-7'>
-                    <Button className='group-hover:bg-grey-200' icon='ellipsis' />
+                    <Button className='group-hover:bg-grey-200' icon={<LucideIcon.Ellipsis />} />
                 </div>
             </div>
         );
@@ -169,7 +171,7 @@ const examplePostsContent = (
         firstOnPage={false}
         primaryAction={{
             title: 'New post',
-            icon: 'add'
+            icon: <LucideIcon.Plus />
         }}
         title='Posts'
         type='page'
@@ -207,7 +209,7 @@ export const ExampleDetailScreen: Story = {
                 }
                 primaryAction={
                     {
-                        icon: 'ellipsis',
+                        icon: <LucideIcon.Ellipsis />,
                         color: 'outline'
                     }
                 }

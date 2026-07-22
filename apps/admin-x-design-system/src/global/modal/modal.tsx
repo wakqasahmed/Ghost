@@ -7,6 +7,7 @@ import Button, {ButtonColor, ButtonProps} from '../button';
 import ButtonGroup from '../button-group';
 import StickyFooter from '../sticky-footer';
 import {Text} from '@tryghost/shade/primitives';
+import {LucideIcon} from '@tryghost/shade/utils';
 
 export type ModalSize = 'sm' | 'md' | 'lg' | 'xl' | 'full' | 'bleed';
 
@@ -446,7 +447,7 @@ const Modal = forwardRef<HTMLElement, ModalProps>(({
                     (<header className={headerClasses}>
                         {title && <Text as='h3' className='md:text-2xl' leading='heading' size='xl' weight='bold'>{title}</Text>}
                         <div className={`${topRightContent !== 'close' && 'md:!invisible md:!hidden'} ${hideXOnMobile && 'hidden'} absolute top-6 right-6`}>
-                            <Button aria-label='Close modal' className='-m-2 cursor-pointer p-2 opacity-50 hover:opacity-100' icon='close' iconColorClass='text-black dark:text-white' size='sm' testId='close-modal' unstyled onClick={removeModal} />
+                            <Button aria-label='Close modal' className='-m-2 cursor-pointer p-2 opacity-50 hover:opacity-100' icon={<LucideIcon.X />} iconColorClass='text-black dark:text-white' size='sm' testId='close-modal' unstyled onClick={removeModal} />
                         </div>
                     </header>)
                     :

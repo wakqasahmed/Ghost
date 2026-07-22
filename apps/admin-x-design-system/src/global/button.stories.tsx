@@ -1,6 +1,7 @@
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 import Button from './button';
+import {LucideIcon} from '@tryghost/shade/utils';
 
 const meta = {
     title: 'Global / Button',
@@ -68,7 +69,7 @@ export const LinkButton: Story = {
 
 export const Icon: Story = {
     args: {
-        icon: 'ellipsis',
+        icon: <LucideIcon.Ellipsis />,
         color: 'green',
         iconColorClass: 'text-white'
     }
@@ -77,7 +78,7 @@ export const Icon: Story = {
 export const IconSmall: Story = {
     args: {
         size: 'sm',
-        icon: 'ellipsis',
+        icon: <LucideIcon.Ellipsis />,
         color: 'green',
         iconColorClass: 'text-white'
     }

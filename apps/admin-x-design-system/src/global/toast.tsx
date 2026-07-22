@@ -1,7 +1,8 @@
 import clsx from 'clsx';
 import React from 'react';
 import {Toast as HotToast, ToastOptions, toast} from 'react-hot-toast';
-import Icon from './icon';
+import {Icon} from '@tryghost/shade/components';
+import {LucideIcon} from '@tryghost/shade/utils';
 
 export type ToastType = 'neutral' | 'info' | 'success' | 'error' | 'pageError';
 
@@ -9,7 +10,7 @@ export interface ShowToastProps {
     title?: React.ReactNode;
     message?: React.ReactNode;
     type?: ToastType;
-    icon?: React.ReactNode | string;
+    icon?: React.ReactNode;
     options?: ToastOptions
 }
 
@@ -17,7 +18,7 @@ export interface ToastProps {
     t: HotToast;
 
     /**
-     * Can be a name of an icon from the icon library or a react component
+     * Toast content rendered alongside the optional icon.
      */
     children?: React.ReactNode;
     props?: ShowToastProps;
@@ -32,20 +33,17 @@ const Toast: React.FC<ToastProps> = ({
     children,
     props
 }) => {
-    let iconColorClass = 'text-grey-500';
+    let toastIcon = props?.icon;
 
     switch (props?.type) {
     case 'info':
-        props.icon = props.icon || 'info-fill';
-        iconColorClass = 'text-grey-500';
+        toastIcon = toastIcon || <Icon.InfoFill className='text-muted-foreground' />;
         break;
     case 'success':
-        props.icon = props.icon || 'success-fill';
-        iconColorClass = 'text-green';
+        toastIcon = toastIcon || <Icon.SuccessFill className='text-green' />;
         break;
     case 'error':
-        props.icon = props.icon || 'error-fill';
-        iconColorClass = 'text-red';
+        toastIcon = toastIcon || <Icon.ErrorFill className='text-red' />;
         break;
     }
 
@@ -58,15 +56,14 @@ const Toast: React.FC<ToastProps> = ({
     return (
         <div className={classNames} data-testid={`toast-${props?.type}`}>
             <div className='mr-7 flex items-start gap-[10px]'>
-                {props?.icon && (typeof props.icon === 'string' ?
-                    <div className='mt-px'><Icon className='grow' colorClass={iconColorClass} name={props.icon} size='sm' /></div> : props.icon)}
+                {toastIcon && <div className='mt-px grow'>{toastIcon}</div>}
                 {children}
             </div>
             <button className='absolute top-5 right-5 -mt-1.5 -mr-1.5 cursor-pointer rounded-full p-2 text-grey-700 hover:text-black dark:hover:text-white' type='button' onClick={() => {
                 toast.dismiss(t.id);
             }}>
                 <div>
-                    <Icon colorClass='stroke-2' name='close' size='2xs' />
+                    <LucideIcon.X className='size-2 stroke-2' />
                 </div>
             </button>
         </div>
@@ -79,7 +76,7 @@ export const showToast = ({
     title,
     message,
     type = 'neutral',
-    icon = '',
+    icon,
     options = {
         position: 'bottom-left',
         duration: 5000

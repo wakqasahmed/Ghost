@@ -3,6 +3,7 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 import ViewContainer, {PrimaryActionProps} from './view-container';
 import Button from '../button';
 import ButtonGroup from '../button-group';
+import {LucideIcon} from '@tryghost/shade/utils';
 
 const meta = {
     title: 'Global / Layout / View Container',
@@ -31,12 +32,12 @@ export const exampleActions = [
     <Button key='sort' label='Sort' outlineOnMobile onClick={() => {
         alert('Clicked sort');
     }} />,
-    <Button key='search' icon='magnifying-glass' iconSize='sm' outlineOnMobile onClick={() => {
+    <Button key='search' icon={<LucideIcon.Search />} outlineOnMobile onClick={() => {
         alert('Clicked search');
     }} />,
     <ButtonGroup key='view-toggle' buttons={[
         {
-            icon: 'listview',
+            icon: <LucideIcon.List />,
             size: 'sm',
             iconColorClass: 'text-black',
             onClick: () => {
@@ -44,7 +45,7 @@ export const exampleActions = [
             }
         },
         {
-            icon: 'cardview',
+            icon: <LucideIcon.LayoutGrid />,
             size: 'sm',
             iconColorClass: 'text-grey-500',
             onClick: () => {
@@ -139,7 +140,7 @@ const sectionActions = [
     }} />,
     <ButtonGroup key='view-toggle' buttons={[
         {
-            icon: 'listview',
+            icon: <LucideIcon.List />,
             size: 'sm',
             iconColorClass: 'text-black',
             onClick: () => {
@@ -147,7 +148,7 @@ const sectionActions = [
             }
         },
         {
-            icon: 'cardview',
+            icon: <LucideIcon.LayoutGrid />,
             size: 'sm',
             iconColorClass: 'text-grey-500',
             onClick: () => {

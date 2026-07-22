@@ -13,7 +13,7 @@ export interface View {
 
 export interface PrimaryActionProps {
     title?: string;
-    icon?: string;
+    icon?: React.ReactNode;
     color?: ButtonColor;
     className?: string;
     onClick?: () => void;
