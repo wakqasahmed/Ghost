@@ -63,6 +63,7 @@ describe('WebhookService - Serialize', function () {
     it('can serialize a new post', async function () {
         const post = fixtureManager.get('posts', 1);
         const postModel = new Post(post);
+        sinon.stub(postModel, 'load').resolves(postModel);
 
         const result = await serialize('post.added', postModel);
 
@@ -72,9 +73,25 @@ describe('WebhookService - Serialize', function () {
         assert.equal(result.post.current.reading_time, 1, 'The reading time generated field should be present');
     });
 
+    it('loads tags before serializing a post', async function () {
+        // The URL service evaluates collection filters (e.g. tags:internal-tag)
+        // against the serialized resource. The event model doesn't reliably
+        // carry tags, so they must be loaded or lazy routing 404s the post.
+        // Authors are left untouched — reloading them would strip their nested
+        // roles from the webhook payload.
+        const post = fixtureManager.get('posts', 1);
+        const postModel = new Post(post);
+        sinon.stub(postModel, 'load').resolves(postModel);
+
+        await serialize('post.published', postModel);
+
+        sinon.assert.calledWith(postModel.load, ['tags']);
+    });
+
     it('can serialize an edited post', async function () {
         const post = fixtureManager.get('posts', 1);
         const postModel = new Post(post);
+        sinon.stub(postModel, 'load').resolves(postModel);
 
         // We use both _previousAttributes and _changed in the webhook serializer
         postModel._previousAttributes.title = post.title;

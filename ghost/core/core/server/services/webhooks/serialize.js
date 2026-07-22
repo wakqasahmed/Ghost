@@ -28,6 +28,13 @@ module.exports = () => async (event, model) => {
         case 'posts':
         case 'pages':
             frame.options.formats = POST_FORMATS;
+            // The event model doesn't reliably carry tags. The lazy URL service
+            // evaluates collection filters (e.g. tags:internal-tag) against the
+            // serialized resource, so tags must be loaded or lazy routing 404s
+            // the post. Authors are already carried by the event; reloading them
+            // would strip their nested roles from the payload, so only tags are
+            // loaded here.
+            await model.load(['tags']);
             frame.options.withRelated = POST_WITH_RELATED;
             model._originalOptions = {
                 withRelated: POST_WITH_RELATED
